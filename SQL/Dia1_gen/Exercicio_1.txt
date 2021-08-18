@@ -1,0 +1,38 @@
+							/*Create database*/
+create database empresa;
+							/*Use database*/
+use empresa;
+							/*Create table*/
+create table tb_setor(
+	id bigint(5)auto_increment,
+    nome varchar(20)not null,
+    primary key(id)
+);
+							/*Create table*/
+create table tb_func(
+	id bigint(5)auto_increment,
+    nome varchar(20)not null,
+	salario decimal(10,2)not null,
+    setor_id bigint(5),
+	primary key(id),
+    Foreign key(setor_id) references tb_setor (id)
+);
+							/*Insert values*/
+INSERT INTO tb_setor (nome) VALUES ("RH");
+INSERT INTO tb_setor (nome) VALUES ("ADM");
+INSERT INTO tb_setor (nome) VALUES ("TECH");
+
+							/*Insert values*/
+INSERT INTO tb_func (nome,salario,setor_id) VALUES ("Matheus",3529, 3);
+INSERT INTO tb_func (nome,salario,setor_id) VALUES ("Maria",1900, 1);
+INSERT INTO tb_func (nome,salario,setor_id) VALUES ("Joelma",2400, 2);
+INSERT INTO tb_func (nome,salario,setor_id) VALUES ("Jenyffer",2150, 1);
+INSERT INTO tb_func (nome,salario,setor_id) VALUES ("Alex",3400, 3);
+							/*Select salario > 2000*/
+select * from tb_func where salario > 2000;
+
+							/*Select salario < 2000*/
+select * from tb_func where salario < 2000;
+
+							/*Update*/
+update tb_func set salario = 1999 where id = 2;
